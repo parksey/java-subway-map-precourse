@@ -52,4 +52,31 @@ public class LineRepository {
         }
         return false;
     }
+
+    public static Line findLine(String lineName) {
+        for (Line line : lines) {
+            if (line.getName().equals(lineName)) {
+                return line;
+            }
+        }
+        return null;
+    }
+
+    public static void sectionRegist(String lineName, String stationName, int order) {
+        Line line = findLine(lineName);
+        setStation(line.getLineStations(), stationName, order);
+    }
+
+    public static void setStation(LineStations lineStations, String stationName, int order) {
+        lineStations.getLineStations().add(order-1, Station.of(stationName));
+    }
+
+    public static void sectionDelete(String lineName, String stationName) {
+        Line line = findLine(lineName);
+        sectionRemove(line.getLineStations(), stationName);
+    }
+
+    public static void sectionRemove(LineStations lineStations, String stationName) {
+        lineStations.getLineStations().removeIf(station -> Objects.equals(station.getName(), stationName));
+    }
 }

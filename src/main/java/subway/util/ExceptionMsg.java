@@ -9,7 +9,9 @@ public enum ExceptionMsg {
     LIMIT_LENGTH("이름은 최소 2글자 이상입니다."),
     EXIST_STATION("이미 존재하는 역입니다."),
     EXIST_LINE("이미 존재하는 노선입니다."),
-    CANNOT_DELETE("노선에 존재하여 삭제할 수 없습니다.");
+    CANNOT_DELETE("노선에 존재하여 삭제할 수 없습니다."),
+    NOT_NUMBER("숫자가 아닙니다."),
+    OUT_OF_RANGE("범위 밖의 구간에 넣으려 합니다.");
 
     private final String msg;
 

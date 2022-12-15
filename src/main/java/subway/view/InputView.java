@@ -60,4 +60,14 @@ public class InputView {
         InputException.nullException(userInpt);
         InputException.notSectionFunction(userInpt);
     }
+
+    public int getOrder() {
+        String userInput = getUserInput();
+        checkDetailInput(userInput);
+        return Integer.parseInt(userInput);
+    }
+    public void checkOrderInput(String userInput) {
+        InputException.nullException(userInput);
+        InputException.notNumberException(userInput);
+    }
 }

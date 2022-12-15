@@ -2,10 +2,7 @@ package subway.view;
 
 import subway.line.domain.Line;
 import subway.station.domain.Station;
-import subway.util.LineFunction;
-import subway.util.MainFunction;
-import subway.util.PrintMsg;
-import subway.util.StationFunction;
+import subway.util.*;
 
 import java.util.List;
 
@@ -53,6 +50,13 @@ public class OutputView {
         printMsg(PrintMsg.LINE_LIST.getMsg());
         for (Line station : lines) {
             printMsg(PrintMsg.INFO.getMsg() + station.getName());
+        }
+    }
+
+    public void printSection() {
+        printMsg(PrintMsg.INPUT_SECTION.getMsg());
+        for (SectionFunction sectionFunction : SectionFunction.values()) {
+            printMsg(sectionFunction.getMsg());
         }
     }
 }

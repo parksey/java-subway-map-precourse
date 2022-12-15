@@ -31,4 +31,5 @@ public class LineStations {
     public List<Station> getLineStations() {
         return lineStations;
     }
+
 }

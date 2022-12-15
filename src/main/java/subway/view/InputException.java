@@ -29,4 +29,16 @@ public class InputException {
             throw new IllegalArgumentException(ExceptionMsg.NOT_SECTION_FUNCTION.getMsg());
         }
     }
+
+    public static void notNumberException(String userInput) {
+        for (int inputIndex = 0; inputIndex < userInput.length(); inputIndex++) {
+            notNumber(userInput.charAt(inputIndex));
+        }
+    }
+
+    public static void notNumber(char input) {
+        if (!Character.isDigit(input)) {
+            throw new IllegalArgumentException(ExceptionMsg.NOT_NUMBER.getMsg());
+        }
+    }
 }
