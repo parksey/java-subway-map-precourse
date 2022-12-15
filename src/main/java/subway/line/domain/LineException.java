@@ -3,6 +3,7 @@ package subway.line.domain;
 import subway.station.domain.Station;
 import subway.station.domain.StationRepository;
 import subway.util.ExceptionMsg;
+import subway.util.PrintMsg;
 import subway.util.SubwayCode;
 
 public class LineException {
@@ -25,5 +26,11 @@ public class LineException {
             }
         }
         return false;
+    }
+
+    public static void isStationInLineException(String stationName) {
+        if (!LineRepository.search(Station.of(stationName))) {
+            throw new IllegalArgumentException(ExceptionMsg.CANNOT_DELETE.getMsg());
+        }
     }
 }

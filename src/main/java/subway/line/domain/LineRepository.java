@@ -1,5 +1,8 @@
 package subway.line.domain;
 
+import subway.domain.LineStations;
+import subway.station.domain.Station;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,5 +26,30 @@ public class LineRepository {
 
     public static void validateRepository(Line line) {
         LineException.notInRepository(line.getName());
+    }
+
+    public static boolean search(Station station) {
+        for (Line line : lines) {
+            if (findStation(line.getLineStations(), station)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean findStation(LineStations lineStations, Station inputStation) {
+        for (Station station : lineStations.getLineStations()) {
+            if (isSame(station, inputStation)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isSame(Station station, Station compare) {
+        if (station.getName().equals(compare.getName())) {
+            return true;
+        }
+        return false;
     }
 }

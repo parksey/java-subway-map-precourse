@@ -14,6 +14,7 @@ import subway.view.OutputView;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SubwayController implements Controllerable{
@@ -90,14 +91,14 @@ public class SubwayController implements Controllerable{
     public boolean selectController(String select) {
         if (select.equals(MainFunction.MAIN_PRINT.getSelect())) {
             // 지하철 노선도 출력
-            return true;
+            return false;
         }
 
         if (controllers.containsKey(select)) {
             controllers.get(select).start();
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 }

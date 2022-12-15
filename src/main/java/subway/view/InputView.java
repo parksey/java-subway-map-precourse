@@ -60,5 +60,4 @@ public class InputView {
         InputException.nullException(userInpt);
         InputException.notSectionFunction(userInpt);
     }
-
 }

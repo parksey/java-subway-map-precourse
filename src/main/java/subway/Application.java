@@ -12,5 +12,7 @@ public class Application {
         // TODO: 프로그램 구현
         InputView inputView = new InputView(scanner);
         SubwayController subwayController = new SubwayController(inputView, new OutputView());
+        subwayController.initController();
+        subwayController.start();
     }
 }

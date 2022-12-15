@@ -8,7 +8,8 @@ public enum ExceptionMsg {
     NOT_SECTION_FUNCTION("구간 관리 기능 선택이 아닙니다."),
     LIMIT_LENGTH("이름은 최소 2글자 이상입니다."),
     EXIST_STATION("이미 존재하는 역입니다."),
-    EXIST_LINE("이미 존재하는 노선입니다.");
+    EXIST_LINE("이미 존재하는 노선입니다."),
+    CANNOT_DELETE("노선에 존재하여 삭제할 수 없습니다.");
 
     private final String msg;
 

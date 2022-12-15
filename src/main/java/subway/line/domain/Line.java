@@ -13,7 +13,6 @@ public class Line {
     }
 
     public static Line of(String name, LineStations lineStations) {
-
         return new Line(name, lineStations);
     }
 
@@ -22,7 +21,11 @@ public class Line {
     }
 
     // 추가 기능 구현
-    public void validateLine(String userInput) {
+    public static void validateLine(String userInput) {
         LineException.notLimitLength(userInput);
+    }
+
+    public LineStations getLineStations() {
+        return lineStations;
     }
 }

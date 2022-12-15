@@ -26,4 +26,5 @@ public class StationRepository {
     public static void validateRepository(Station station) {
         StationException.notInRepository(station.getName());
     }
+
 }

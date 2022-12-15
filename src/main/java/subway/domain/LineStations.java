@@ -16,8 +16,8 @@ public class LineStations {
         lineStations.add(downStation);
     }
 
-    LineStations(List<Station> lineStations) {
-        lineStations = lineStations;
+    public LineStations(List<Station> lineStations) {
+        this.lineStations = lineStations;
     }
 
     public static LineStations of(List<Station> lineStations) {
@@ -26,5 +26,9 @@ public class LineStations {
 
     public void addLineStation(Station station) {
         lineStations.add(station);
+    }
+
+    public List<Station> getLineStations() {
+        return lineStations;
     }
 }

@@ -20,11 +20,8 @@ public class StationController implements Controllerable {
     }
     @Override
     public void start() {
-        boolean isBack = false;
-        while (!isBack) {
-            String stationSelect = readStationInput();
-            isBack = selectFunction(stationSelect);
-        }
+        String stationSelect = readStationInput();
+        selectFunction(stationSelect);
     }
 
     public String readStationInput() {
@@ -50,12 +47,12 @@ public class StationController implements Controllerable {
             return true;
         }
         if (select.equals(StationFunction.DELETE.getSelect())) {
-
+            deleteStationName();
             return true;
         }
 
         if (select.equals(StationFunction.SEARCH.getSelect())) {
-            stationDomain.search();
+            searchStation();
             return true;
         }
         return false;
@@ -65,7 +62,7 @@ public class StationController implements Controllerable {
      * 역 등록 함수
      */
     public void registStationName() {
-        if (!getRegistStationName()) {
+        if (getRegistStationName()) {
             outputView.printEmptyMsg();
             outputView.printMsg(PrintMsg.SUCCESS_STATION_REGIST.getMsg());
         }
@@ -89,7 +86,6 @@ public class StationController implements Controllerable {
             outputView.printMsg(PrintMsg.SUCCESS_STATION_DELETE.getMsg());
         }
     }
-    
     public boolean getDeleteStationName() {
         try {
             outputView.printEmptyMsg();
@@ -99,6 +95,11 @@ public class StationController implements Controllerable {
             outputView.printEmptyMsg();
             outputView.printMsg(exception.getMessage());
         }
+        return false;
+    }
+
+    public void searchStation() {
+        outputView.printStations(stationDomain.search());
     }
 
 }
