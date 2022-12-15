@@ -1,4 +1,4 @@
-package subway.domain;
+package subway.line.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,10 +13,15 @@ public class LineRepository {
     }
 
     public static void addLine(Line line) {
+        validateRepository(line);
         lines.add(line);
     }
 
     public static boolean deleteLineByName(String name) {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
+    }
+
+    public static void validateRepository(Line line) {
+        LineException.notInRepository(line.getName());
     }
 }

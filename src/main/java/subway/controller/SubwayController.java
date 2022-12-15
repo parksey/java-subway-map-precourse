@@ -1,6 +1,7 @@
 package subway.controller;
 
 import subway.station.domain.Station;
+import subway.station.domain.StationRepository;
 import subway.view.InputView;
 import subway.view.OutputView;
 
@@ -22,7 +23,13 @@ public class SubwayController implements Controllerable{
         Station 양재시민의숲역 = Station.of("양재시민의숲역");
         Station 매봉역 = Station.of("매봉역");
 
-
+        StationRepository.addStation(교대역);
+        StationRepository.addStation(강남역);
+        StationRepository.addStation(역삼역);
+        StationRepository.addStation(교대남부터미널역);
+        StationRepository.addStation(양재역);
+        StationRepository.addStation(양재시민의숲역);
+        StationRepository.addStation(매봉역);
     }
 
 

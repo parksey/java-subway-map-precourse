@@ -1,9 +1,11 @@
-package subway.station.domain;
+package subway.line.domain;
 
+import subway.station.domain.Station;
+import subway.station.domain.StationRepository;
 import subway.util.ExceptionMsg;
 import subway.util.SubwayCode;
 
-public class StationException {
+public class LineException {
     public static void notLimitLength(String userInput) {
         if (userInput.length() <= SubwayCode.NAME_LIMIT.getCode()) {
             throw new IllegalArgumentException(ExceptionMsg.LIMIT_LENGTH.getMsg());
@@ -17,12 +19,11 @@ public class StationException {
     }
 
     private static boolean isInRepository(String userInput) {
-        for (Station station : StationRepository.stations()) {
-            if (station.getName().equals(userInput)) {
+        for (Line line : LineRepository.lines()) {
+            if (line.getName().equals(userInput)) {
                 return true;
             }
         }
         return false;
     }
-
 }

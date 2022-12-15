@@ -41,6 +41,12 @@ public class InputView {
         InputException.notDetailFunction(userInpt);
     }
 
+    public String getStationName() {
+        String userInput = getUserInput();
+        InputException.nullException(userInput);
+        return userInput;
+    }
+
     /**
      * 구간 관리 화면 기능 입력
      * @return

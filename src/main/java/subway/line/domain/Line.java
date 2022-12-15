@@ -1,9 +1,10 @@
-package subway.domain;
+package subway.line.domain;
 
 public class Line {
     private String name;
 
     public Line(String name) {
+        validateLine(name);
         this.name = name;
     }
 
@@ -16,4 +17,7 @@ public class Line {
     }
 
     // 추가 기능 구현
+    public void validateLine(String userInput) {
+        LineException.notLimitLength(userInput);
+    }
 }

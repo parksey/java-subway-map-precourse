@@ -15,10 +15,15 @@ public class StationRepository {
     }
 
     public static void addStation(Station station) {
+        validateRepository(station);
         stations.add(station);
     }
 
     public static boolean deleteStation(String name) {
         return stations.removeIf(station -> Objects.equals(station.getName(), name));
+    }
+
+    public static void validateRepository(Station station) {
+        StationException.notInRepository(station.getName());
     }
 }

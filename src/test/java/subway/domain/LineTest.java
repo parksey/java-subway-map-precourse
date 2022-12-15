@@ -3,38 +3,27 @@ package subway.domain;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import subway.line.domain.LineException;
 import subway.station.domain.Station;
 import subway.station.domain.StationException;
 import subway.station.domain.StationRepository;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class StationTest {
-
+public class LineTest {
     @ParameterizedTest
     @ValueSource(strings = {"1", "r", "가"})
     public void notLimitLength_test(String userInput) {
         assertThatThrownBy(() -> {
-            StationException.notLimitLength(userInput);
+            LineException.notLimitLength(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"가나", "오역", "역역"})
+    @ValueSource(strings = {"2호선", "3호선"})
     public void notInRepository_test(String userInput) {
         assertThatThrownBy(() -> {
-            StationException.notInRepository(userInput);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    public void station_Test() {
-        Station 교대역 = Station.of("교대역");
-        Station 강남역 = Station.of("강남역");
-        StationRepository.addStation(교대역);
-        StationRepository.addStation(강남역);
-        assertThatThrownBy(() -> {
-            StationRepository.addStation(교대역);
+            LineException.notInRepository(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
