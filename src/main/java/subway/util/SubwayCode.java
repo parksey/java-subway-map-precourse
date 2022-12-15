@@ -1,7 +1,7 @@
 package subway.util;
 
 public enum SubwayCode {
-    NAME_LENGTH(1);
+    NAME_LIMIT(1);
 
     private final int code;
 

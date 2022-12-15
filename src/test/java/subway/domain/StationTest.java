@@ -17,7 +17,7 @@ public class StationTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"1", "r", "가"})
+    @ValueSource(strings = {"가나", "오역", "역역"})
     public void notInRepository_test(String userInput) {
         assertThatThrownBy(() -> {
             StationException.notInRepository(userInput);

@@ -4,6 +4,7 @@ public class Station {
     private String name;
 
     public Station(String name) {
+        validateStation(name);
         this.name = name;
     }
 
@@ -16,4 +17,8 @@ public class Station {
     }
 
     // 추가 기능 구현
+    public void validateStation(String userInput) {
+        StationException.notLimitLength(userInput);
+        StationException.notInRepository(userInput);
+    }
 }
