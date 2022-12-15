@@ -7,6 +7,10 @@ public class Station {
         this.name = name;
     }
 
+    public static Station of(String name) {
+        return new Station(name);
+    }
+
     public String getName() {
         return name;
     }

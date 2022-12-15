@@ -7,6 +7,10 @@ public class Line {
         this.name = name;
     }
 
+    public static Line of(String name) {
+        return new Line(name);
+    }
+
     public String getName() {
         return name;
     }
