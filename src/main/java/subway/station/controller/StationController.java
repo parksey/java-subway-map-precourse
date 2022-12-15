@@ -1,6 +1,7 @@
 package subway.station.controller;
 
 import subway.controller.Controllerable;
+import subway.station.domain.StationDomain;
 import subway.util.MainFunction;
 import subway.util.PrintMsg;
 import subway.util.StationFunction;
@@ -10,10 +11,12 @@ import subway.view.OutputView;
 public class StationController implements Controllerable {
     private final InputView inputView;
     private final OutputView outputView;
+    private final StationDomain stationDomain;
 
     public StationController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.stationDomain = new StationDomain();
     }
     @Override
     public void start() {
@@ -43,20 +46,54 @@ public class StationController implements Controllerable {
 
     public boolean selectFunction(String select) {
         if (select.equals(StationFunction.REGIST.getSelect())) {
-            // 역 등록
+            registStationName();
             return true;
         }
         if (select.equals(StationFunction.DELETE.getSelect())) {
-            // 역 삭제
+
             return true;
         }
 
         if (select.equals(StationFunction.SEARCH.getSelect())) {
-            // 역 조회
+            stationDomain.search();
             return true;
         }
         return false;
     }
 
+    /**
+     * 역 등록 함수
+     */
+    public void registStationName() {
+        boolean isClear = false;
+        while (!isClear) {
+            try {
+                outputView.printEmptyMsg();
+                outputView.printMsg(PrintMsg.INPUT_STATION_REGIST.getMsg());
+                isClear = stationDomain.regist(inputView.getStationName());
+            } catch (IllegalArgumentException exception) {
+                outputView.printEmptyMsg();
+                outputView.printMsg(exception.getMessage());
+            }
+        }
+        outputView.printEmptyMsg();
+        outputView.printMsg(PrintMsg.SUCCESS_STATION_REGIST.getMsg());
+    }
+
+    public void deleteStationName() {
+        boolean isClear = false;
+        while (!isClear) {
+            try {
+                outputView.printEmptyMsg();
+                outputView.printMsg(PrintMsg.INPUT_STATION_DELETE.getMsg());
+                isClear = stationDomain.delete(inputView.getStationName());
+            } catch (IllegalArgumentException exception) {
+                outputView.printEmptyMsg();
+                outputView.printMsg(exception.getMessage());
+            }
+        }
+        outputView.printEmptyMsg();
+        outputView.printMsg(PrintMsg.SUCCESS_STATION_DELETE.getMsg());
+    }
 
 }
