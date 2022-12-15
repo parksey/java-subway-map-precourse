@@ -42,8 +42,12 @@ public class InputView {
      */
     public String getSectionInput() {
         String userInput = getUserInput();
+        checkSectionInput(userInput);
         return userInput;
     }
-
+    public void checkSectionInput(String userInpt) {
+        InputException.nullException(userInpt);
+        InputException.notSectionFunction(userInpt);
+    }
 
 }

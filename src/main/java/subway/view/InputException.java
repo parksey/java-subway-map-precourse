@@ -1,6 +1,7 @@
 package subway.view;
 
 import subway.util.MainFunction;
+import subway.util.SectionFunction;
 import subway.util.StationFunction;
 
 public class InputException {
@@ -18,7 +19,13 @@ public class InputException {
 
     public static void notDetailFunction(String userInput) {
         if (!StationFunction.isStationFunction(userInput)) {
-            throw new IllegalArgumentException("역 관련 기능 선택이 아닙니다.");
+            throw new IllegalArgumentException("역이나 노션 관련 기능 선택이 아닙니다.");
+        }
+    }
+
+    public static void notSectionFunction(String userInput) {
+        if (!SectionFunction.isSectionFunction(userInput)) {
+            throw new IllegalArgumentException("구간 관리 기능 선택이 아닙니다.");
         }
     }
 }

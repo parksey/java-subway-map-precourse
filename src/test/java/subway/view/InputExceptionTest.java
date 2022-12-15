@@ -30,7 +30,7 @@ public class InputExceptionTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"0", "Q"})
+    @ValueSource(strings = {"0", "3", "Q"})
     public void notSectionFunctino_test(String userInput) {
         assertThatThrownBy(()-> {
             InputException.notSectionFunction(userInput);
