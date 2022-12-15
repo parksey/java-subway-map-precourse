@@ -65,35 +65,40 @@ public class StationController implements Controllerable {
      * 역 등록 함수
      */
     public void registStationName() {
-        boolean isClear = false;
-        while (!isClear) {
-            try {
-                outputView.printEmptyMsg();
-                outputView.printMsg(PrintMsg.INPUT_STATION_REGIST.getMsg());
-                isClear = stationDomain.regist(inputView.getStationName());
-            } catch (IllegalArgumentException exception) {
-                outputView.printEmptyMsg();
-                outputView.printMsg(exception.getMessage());
-            }
+        if (!getRegistStationName()) {
+            outputView.printEmptyMsg();
+            outputView.printMsg(PrintMsg.SUCCESS_STATION_REGIST.getMsg());
         }
-        outputView.printEmptyMsg();
-        outputView.printMsg(PrintMsg.SUCCESS_STATION_REGIST.getMsg());
+    }
+
+    public boolean getRegistStationName() {
+        try {
+            outputView.printEmptyMsg();
+            outputView.printMsg(PrintMsg.INPUT_STATION_REGIST.getMsg());
+            return stationDomain.regist(inputView.getStationName());
+        } catch (IllegalArgumentException exception) {
+            outputView.printEmptyMsg();
+            outputView.printMsg(exception.getMessage());
+        }
+        return false;
     }
 
     public void deleteStationName() {
-        boolean isClear = false;
-        while (!isClear) {
-            try {
-                outputView.printEmptyMsg();
-                outputView.printMsg(PrintMsg.INPUT_STATION_DELETE.getMsg());
-                isClear = stationDomain.delete(inputView.getStationName());
-            } catch (IllegalArgumentException exception) {
-                outputView.printEmptyMsg();
-                outputView.printMsg(exception.getMessage());
-            }
+        if (getDeleteStationName()) {
+            outputView.printEmptyMsg();
+            outputView.printMsg(PrintMsg.SUCCESS_STATION_DELETE.getMsg());
         }
-        outputView.printEmptyMsg();
-        outputView.printMsg(PrintMsg.SUCCESS_STATION_DELETE.getMsg());
+    }
+    
+    public boolean getDeleteStationName() {
+        try {
+            outputView.printEmptyMsg();
+            outputView.printMsg(PrintMsg.INPUT_STATION_DELETE.getMsg());
+            return stationDomain.delete(inputView.getStationName());
+        } catch (IllegalArgumentException exception) {
+            outputView.printEmptyMsg();
+            outputView.printMsg(exception.getMessage());
+        }
     }
 
 }
