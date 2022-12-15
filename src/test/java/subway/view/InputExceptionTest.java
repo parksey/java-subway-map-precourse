@@ -14,7 +14,7 @@ public class InputExceptionTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", " "})
+    @ValueSource(strings = {"0", "B"})
     public void notMainFunction_test(String userInput) {
         assertThatThrownBy(()-> {
             InputException.notMainFunction(userInput);

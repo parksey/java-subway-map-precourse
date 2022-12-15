@@ -14,11 +14,12 @@ public class InputView {
      */
     public String getMainInput() {
         String userInput = getUserInput();
+        checkMainInput(userInput);
         return userInput;
     }
-
-    public void checkMainInput() {
-
+    public void checkMainInput(String userInpt) {
+        InputException.nullException(userInpt);
+        InputException.notMainFunction(userInpt);
     }
 
     /**
