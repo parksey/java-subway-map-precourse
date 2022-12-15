@@ -30,9 +30,9 @@ public class SubwayController implements Controllerable{
     public void initController() {
         initMap();
 
-        controllers.put(MainFunction.STATION.getSelect(), new StationController());
-        controllers.put(MainFunction.LINE.getSelect(), new LineController());
-        controllers.put(MainFunction.SECTION.getSelect(), new SectionController());
+        controllers.put(MainFunction.STATION.getSelect(), new StationController(inputView, outputView));
+        controllers.put(MainFunction.LINE.getSelect(), new LineController(inputView, outputView));
+        controllers.put(MainFunction.SECTION.getSelect(), new SectionController(inputView, outputView));
     }
     public void initMap() {
         Station 교대역 = Station.of("교대역");
@@ -63,9 +63,10 @@ public class SubwayController implements Controllerable{
 
     @Override
     public void start() {
-        while (true) {
+        boolean isFinish = false;
+        while (!isFinish) {
             String mainSelect = readMainInput();
-            selectController(mainSelect);
+            isFinish = selectController(mainSelect);
         }
     }
 
@@ -86,14 +87,17 @@ public class SubwayController implements Controllerable{
         }
     }
 
-    public void selectController(String select) {
+    public boolean selectController(String select) {
         if (select.equals(MainFunction.MAIN_PRINT.getSelect())) {
             // 지하철 노선도 출력
-            return;
+            return true;
         }
 
         if (controllers.containsKey(select)) {
             controllers.get(select).start();
+            return true;
         }
+
+        return false;
     }
 }

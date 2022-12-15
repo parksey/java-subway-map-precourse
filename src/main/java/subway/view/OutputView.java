@@ -2,6 +2,7 @@ package subway.view;
 
 import subway.util.MainFunction;
 import subway.util.PrintMsg;
+import subway.util.StationFunction;
 
 public class OutputView {
     public void printMsg(String msg) {
@@ -19,6 +20,13 @@ public class OutputView {
         printMsg(PrintMsg.INPUT_MAIN.getMsg());
         for (MainFunction mainFunction : MainFunction.values()) {
             printMsg(mainFunction.getMsg());
+        }
+    }
+
+    public void printStation() {
+        printMsg(PrintMsg.INPUT_STATION.getMsg());
+        for (StationFunction stationFunction : StationFunction.values()) {
+            printMsg(stationFunction.getMsg());
         }
     }
 }
