@@ -5,21 +5,32 @@ import subway.line.domain.Line;
 import subway.line.domain.LineRepository;
 import subway.station.domain.Station;
 import subway.station.domain.StationRepository;
+import subway.util.MainFunction;
+import subway.util.PrintMsg;
 import subway.view.InputView;
 import subway.view.OutputView;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SubwayController implements Controllerable{
     private final InputView inputView;
     private final OutputView outputView;
+    private final Map<String, Controllerable> controllers;
 
     public SubwayController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
+        controllers = new HashMap<>();
     }
 
     public void initController() {
+        initMap();
+
+
+    }
+    public void initMap() {
         Station 교대역 = Station.of("교대역");
         Station 강남역 = Station.of("강남역");
         Station 역삼역 = Station.of("역삼역");
@@ -48,6 +59,26 @@ public class SubwayController implements Controllerable{
 
     @Override
     public void start() {
-
+        while (true) {
+            readMainInput();
+        }
     }
+
+    public void readMainInput() {
+        outputView.printMain();
+        getMainInput();
+    }
+    public String getMainInput() {
+        while (true) {
+            try {
+                outputView.printEmptyMsg();
+                outputView.printMsg(PrintMsg.INPUT_SELECT.getMsg());
+                return inputView.getMainInput();
+            } catch (IllegalArgumentException exception) {
+                outputView.printEmptyMsg();
+                outputView.printMsg(exception.getMessage());
+            }
+        }
+    }
+
 }
