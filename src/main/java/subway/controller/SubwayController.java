@@ -1,6 +1,6 @@
 package subway.controller;
 
-import subway.domain.Station;
+import subway.station.domain.Station;
 import subway.view.InputView;
 import subway.view.OutputView;
 
