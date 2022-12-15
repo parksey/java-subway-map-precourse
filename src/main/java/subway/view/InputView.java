@@ -28,7 +28,12 @@ public class InputView {
      */
     public String getStationInput() {
         String userInput = getUserInput();
+        checkStationInput(userInput);
         return userInput;
+    }
+    public void checkStationInput(String userInpt) {
+        InputException.nullException(userInpt);
+        InputException.notStationFunction(userInpt);
     }
 
     /**
