@@ -17,6 +17,10 @@ public class InputView {
         return userInput;
     }
 
+    public void checkMainInput() {
+
+    }
+
     /**
      * 역 관리 화면 기능 입력
      * @return
