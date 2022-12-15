@@ -20,4 +20,12 @@ public class InputExceptionTest {
             InputException.notMainFunction(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "Q"})
+    public void notStationFunction_test(String userInput) {
+        assertThatThrownBy(()-> {
+            InputException.notStationFunction(userInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 }
