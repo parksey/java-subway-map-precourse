@@ -16,7 +16,7 @@ public class InputException {
         }
     }
 
-    public static void notStationFunction(String userInput) {
+    public static void notDetailFunction(String userInput) {
         if (!StationFunction.isStationFunction(userInput)) {
             throw new IllegalArgumentException("역 관련 기능 선택이 아닙니다.");
         }

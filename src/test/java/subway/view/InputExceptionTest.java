@@ -23,9 +23,17 @@ public class InputExceptionTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"0", "Q"})
-    public void notStationFunction_test(String userInput) {
+    public void notDetailFunction_test(String userInput) {
         assertThatThrownBy(()-> {
-            InputException.notStationFunction(userInput);
+            InputException.notDetailFunction(userInput);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "Q"})
+    public void notSectionFunctino_test(String userInput) {
+        assertThatThrownBy(()-> {
+            InputException.notSectionFunction(userInput);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

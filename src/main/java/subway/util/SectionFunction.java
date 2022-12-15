@@ -1,21 +1,20 @@
 package subway.util;
 
-public enum StationFunction {
-    REGIST("1", "1. 역 등록"),
-    DELETE("2", "2. 역 삭제"),
-    SEARCH("3", "3. 역 조회"),
+public enum SectionFunction {
+    REGIST("1", "1. 구간 등록"),
+    DELETE("2", "2. 구간 삭제"),
     BACK("B", "B. 돌아가기");
     private final String select;
     private final String msg;
 
-    StationFunction(String select, String msg) {
+    SectionFunction(String select, String msg) {
         this.select = select;
         this.msg =msg;
     }
 
-    public static boolean isStationFunction(String userInput) {
-        for (StationFunction stationFunction : StationFunction.values()) {
-            if (stationFunction.select.equals(userInput)) {
+    public static boolean isSectionFunction(String userInput) {
+        for (SectionFunction sectionFunction : SectionFunction.values()) {
+            if (sectionFunction.select.equals(userInput)) {
                 return true;
             }
         }

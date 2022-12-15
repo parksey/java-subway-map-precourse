@@ -23,26 +23,17 @@ public class InputView {
     }
 
     /**
-     * 역 관리 화면 기능 입력
+     * 역 관리, 노선 관리 화면 기능 입력
      * @return
      */
-    public String getStationInput() {
+    public String getDetailInput() {
         String userInput = getUserInput();
-        checkStationInput(userInput);
+        checkDetailInput(userInput);
         return userInput;
     }
-    public void checkStationInput(String userInpt) {
+    public void checkDetailInput(String userInpt) {
         InputException.nullException(userInpt);
-        InputException.notStationFunction(userInpt);
-    }
-
-    /**
-     * 노선 관리 화면 기능 입력
-     * @return
-     */
-    public String getLineInput() {
-        String userInput = getUserInput();
-        return userInput;
+        InputException.notDetailFunction(userInpt);
     }
 
     /**
