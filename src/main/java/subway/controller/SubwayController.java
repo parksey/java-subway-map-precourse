@@ -1,8 +1,10 @@
 package subway.controller;
 
 import subway.domain.LineStations;
+import subway.line.controller.LineController;
 import subway.line.domain.Line;
 import subway.line.domain.LineRepository;
+import subway.station.controller.StationController;
 import subway.station.domain.Station;
 import subway.station.domain.StationRepository;
 import subway.util.MainFunction;
@@ -28,7 +30,9 @@ public class SubwayController implements Controllerable{
     public void initController() {
         initMap();
 
-
+        controllers.put(MainFunction.STATION.getSelect(), new StationController());
+        controllers.put(MainFunction.LINE.getSelect(), new LineController());
+        controllers.put(MainFunction.SECTION.getSelect(), new SectionController());
     }
     public void initMap() {
         Station 교대역 = Station.of("교대역");
@@ -60,13 +64,14 @@ public class SubwayController implements Controllerable{
     @Override
     public void start() {
         while (true) {
-            readMainInput();
+            String mainSelect = readMainInput();
+            selectController(mainSelect);
         }
     }
 
-    public void readMainInput() {
+    public String readMainInput() {
         outputView.printMain();
-        getMainInput();
+        return getMainInput();
     }
     public String getMainInput() {
         while (true) {
@@ -81,4 +86,14 @@ public class SubwayController implements Controllerable{
         }
     }
 
+    public void selectController(String select) {
+        if (select.equals(MainFunction.MAIN_PRINT.getSelect())) {
+            // 지하철 노선도 출력
+            return;
+        }
+
+        if (controllers.containsKey(select)) {
+            controllers.get(select).start();
+        }
+    }
 }
